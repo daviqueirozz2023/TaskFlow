@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="container">
+
+        <header class="cabecalho">
+            <div class="titulo-app">
+                <button id="botaoMenu"
+                        type="button"
+                        aria-label="Abrir menu">☰</button>
+
+                <h1>🚀 TaskFlow</h1>
+            </div>
+
+            <button id="botaoTema" type="button">
+                🌙 Modo Escuro
+            </button>
+        </header>
+
+        <p class="subtitulo">
+            Organiza o teu dia, uma tarefa de cada vez.
+        </p>
+
+
+        <section class="dashboard">
+            <h2>📊 Visão geral</h2>
+
+            <div class="cards-dashboard">
+
+                <div class="card-estatistica total">
+                    <span>📋 Total de tarefas</span>
+                    <strong id="totalTarefas">0</strong>
+                </div>
+
+                <div class="card-estatistica pendentes">
+                    <span>⏳ Pendentes</span>
+                    <strong id="tarefasPendentes">0</strong>
+                </div>
+
+                <div class="card-estatistica concluidas">
+                    <span>✅ Concluídas</span>
+                    <strong id="tarefasConcluidas">0</strong>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="area-tarefas">
+            <h2>As minhas tarefas</h2>
+            <ul id="listaTarefas"></ul>
+
+            <div id="estadoVazio" hidden>
+                <div class="icone-vazio">✓</div>
+                <h3>Nenhuma tarefa!</h3>
+                <p>Adiciona uma tarefa para começar.</p>
+            </div>
+        </section>
+
+        
+        <form id="formTarefa">
+
+            <input
+                id="titulo"
+                type="text"
+                placeholder="Digite uma nova tarefa..."
+                required
+            >
+
+            <select id="categoriaTarefa" aria-label="Categoria da tarefa">
+                <option value="Pessoal">🏠 Pessoal</option>
+                <option value="Trabalho">💼 Trabalho</option>
+                <option value="Estudos">📚 Estudos</option>
+            </select>
+
+
+            <select id="prioridadeTarefa" aria-label="Prioridade da tarefa">
+                <option value="Baixa">🟢 Baixa</option>
+                <option value="Media" selected>🟡 Média</option>
+                <option value="Alta">🔴 Alta</option>
+            </select>
+
+
+            <button type="submit">
+                Adicionar
+            </button>
+
+        </form>
+
+
+        <p id="mensagem" role="status"></p>
+
+    </main>
+
+    <button id="botaoFlutuante"
+            type="button"
+            aria-label="Adicionar tarefa">+</button>
+
+    <nav id="menuLateral" aria-label="Menu principal">
+        <h2>TaskFlow</h2>
+        <button id="fecharMenu"
+                type="button">✕ Fechar</button>
+
+        <p>As minhas listas</p>
+
+        
+        <button type="button" class="menu-item filtro-categoria"
+                data-categoria="Todas">
+            📋 Todas as tarefas
+        </button>
+
+        <button type="button" class="menu-item filtro-categoria"
+                data-categoria="Pessoal">
+            🏠 Pessoal
+        </button>
+
+        <button type="button" class="menu-item filtro-categoria"
+                data-categoria="Trabalho">
+            💼 Trabalho
+        </button>
+
+        <button type="button" class="menu-item filtro-categoria"
+                data-categoria="Estudos">
+            📚 Estudos
+        </button>
+
+    </nav>
+
+    <div id="overlayMenu"></div>
+
+
+<!-- JANELA DE EDIÇÃO -->
+
+<div id="modalEditar" class="modal-overlay" hidden>
+    <div class="modal-conteudo"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="tituloModal">
+
+        <h2 id="tituloModal">✏️ Editar tarefa</h2>
+
+        <form id="formEditar">
+
+            <label for="editarTitulo">Título da tarefa</label>
+            <input
+                type="text"
+                id="editarTitulo"
+                required
+            >
+
+            <label for="editarCategoria">Categoria</label>
+            <select id="editarCategoria">
+                <option value="Pessoal">🏠 Pessoal</option>
+                <option value="Trabalho">💼 Trabalho</option>
+                <option value="Estudos">📚 Estudos</option>
+            </select>
+
+
+            <label for="editarPrioridade">Prioridade</label>
+
+            <select id="editarPrioridade">
+                <option value="Baixa">🟢 Baixa</option>
+                <option value="Media">🟡 Média</option>
+                <option value="Alta">🔴 Alta</option>
+            </select>
+
+
+            <p id="erroEdicao" role="alert"></p>
+
+            <div class="modal-botoes">
+                <button type="button" id="cancelarEdicao">
+                    Cancelar
+                </button>
+
+                <button type="submit" id="salvarEdicao">
+                    Salvar alterações
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
