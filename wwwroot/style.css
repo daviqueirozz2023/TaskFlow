@@ -977,3 +977,222 @@ body.dark #prioridadeTarefa {
         min-height: 46px;
     }
 }
+
+
+/* CALENDÁRIO DE VENCIMENTO */
+
+#dataVencimento {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: white;
+    color: #1e293b;
+    color-scheme: light;
+}
+
+body.dark #dataVencimento,
+body.dark #editarDataVencimento {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+    color-scheme: dark;
+}
+
+/* INDICADORES DE PRAZO */
+
+.prazo-atrasado {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.prazo-hoje {
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+.prazo-normal {
+    color: #2563eb;
+}
+
+body.dark .prazo-atrasado {
+    color: #fca5a5;
+}
+
+body.dark .prazo-hoje {
+    color: #fbbf24;
+}
+
+body.dark .prazo-normal {
+    color: #93c5fd;
+}
+
+/* FORMULÁRIO RESPONSIVO */
+
+@media (min-width: 601px) {
+    #formTarefa {
+        flex-wrap: wrap;
+    }
+
+    #formTarefa input#titulo {
+        flex: 1 1 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    #formTarefa {
+        flex-direction: column;
+    }
+
+    #dataVencimento {
+        width: 100%;
+        min-height: 46px;
+    }
+}
+
+
+/* =====================================
+   TASKFLOW - DASHBOARD COM 4 CARTÕES
+===================================== */
+
+.cards-dashboard {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card-estatistica.atrasadas {
+    border-left: 4px solid #ef4444;
+}
+
+/* TABLETS */
+
+@media (max-width: 1100px) {
+    .cards-dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+
+@media (max-width: 600px) {
+    .cards-dashboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .card-estatistica:first-child {
+        grid-column: auto;
+    }
+
+    .card-estatistica {
+        padding: 14px;
+    }
+
+    .card-estatistica span {
+        font-size: 12px;
+    }
+
+    .card-estatistica strong {
+        font-size: 26px;
+    }
+}
+
+
+/* ==========================================
+   TASKFLOW - ROLAGEM DA LISTA DE TAREFAS
+========================================== */
+
+.area-tarefas {
+    min-width: 0;
+}
+
+.rolagem-tarefas {
+    /* Limita a altura da lista */
+    max-height: 420px;
+
+    /* Barra aparece somente quando necessária */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Rolagem mais suave */
+    scroll-behavior: smooth;
+
+    /* Espaço entre as tarefas e a barra */
+    padding-right: 10px;
+
+    /* Evita rolar a página ao chegar ao fim da lista */
+    overscroll-behavior-y: contain;
+
+    /* Estilo da barra no Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #64748b transparent;
+}
+
+/* Barra de rolagem no Chrome e Edge */
+
+.rolagem-tarefas::-webkit-scrollbar {
+    width: 8px;
+}
+
+.rolagem-tarefas::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.rolagem-tarefas::-webkit-scrollbar-thumb {
+    background: #64748b;
+    border-radius: 10px;
+}
+
+.rolagem-tarefas::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Modo claro */
+
+body:not(.dark) .rolagem-tarefas {
+    scrollbar-color: #94a3b8 transparent;
+}
+
+/* Celulares */
+
+@media (max-width: 600px) {
+    .rolagem-tarefas {
+        max-height: 55dvh;
+        padding-right: 5px;
+    }
+}
+
+/* Telas menores na altura */
+
+@media (max-height: 700px) and (min-width: 601px) {
+    .rolagem-tarefas {
+        max-height: 300px;
+    }
+}
+
+
+/* ========================================
+   AJUSTES DA LISTA NO MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    /* Limitar a altura da lista */
+    .rolagem-tarefas {
+        max-height: 45dvh;
+        padding-bottom: 80px;
+        scroll-padding-bottom: 80px;
+    }
+
+    /* Ajustar posição do botão flutuante */
+    #botaoFlutuante {
+        right: 20px;
+        bottom: 20px;
+        width: 56px;
+        height: 56px;
+    }
+
+    /* Melhorar espaço entre os cartões */
+    #listaTarefas li {
+        margin-bottom: 12px;
+    }
+}

@@ -52,20 +52,37 @@
                     <strong id="tarefasConcluidas">0</strong>
                 </div>
 
+                <div class="card-estatistica atrasadas">
+                    <span>⚠️ Tarefas atrasadas</span>
+                    <strong id="tarefasAtrasadas">0</strong>
+                </div>
+
             </div>
         </section>
 
 
+        
         <section class="area-tarefas">
-            <h2>As minhas tarefas</h2>
-            <ul id="listaTarefas"></ul>
 
-            <div id="estadoVazio" hidden>
-                <div class="icone-vazio">✓</div>
-                <h3>Nenhuma tarefa!</h3>
-                <p>Adiciona uma tarefa para começar.</p>
+            <h2>Minhas tarefas</h2>
+
+            <div class="rolagem-tarefas"
+                tabindex="0"
+                role="region"
+                aria-label="Lista de tarefas">
+
+                <ul id="listaTarefas"></ul>
+
+                <div id="estadoVazio" hidden>
+                    <div class="icone-vazio">✓</div>
+                    <h3>Nenhuma tarefa!</h3>
+                    <p>Adicione uma tarefa para começar.</p>
+                </div>
+
             </div>
+
         </section>
+
 
         
         <form id="formTarefa">
@@ -76,6 +93,14 @@
                 placeholder="Digite uma nova tarefa..."
                 required
             >
+
+
+            <input
+                type="date"
+                id="dataVencimento"
+                aria-label="Data de vencimento da tarefa"
+            >
+
 
             <select id="categoriaTarefa" aria-label="Categoria da tarefa">
                 <option value="Pessoal">🏠 Pessoal</option>
@@ -173,6 +198,17 @@
                 <option value="Media">🟡 Média</option>
                 <option value="Alta">🔴 Alta</option>
             </select>
+
+
+            <label for="editarDataVencimento">
+                📅 Data de vencimento
+            </label>
+
+            <input
+                type="date"
+                id="editarDataVencimento"
+            >
+
 
 
             <p id="erroEdicao" role="alert"></p>

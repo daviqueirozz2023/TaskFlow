@@ -95,6 +95,7 @@ app.MapPost("/tarefas", async (
         Titulo = dados.Titulo.Trim(),
         Categoria = categoria,
         Prioridade = prioridade,
+        DataVencimento = dados.DataVencimento,
         Concluida = false
     };
 
@@ -194,6 +195,7 @@ app.MapPut("/tarefas/{id:int}", async (
     tarefa.Titulo = dados.Titulo.Trim();
     tarefa.Categoria = dados.Categoria;
     tarefa.Prioridade = prioridade;
+    tarefa.DataVencimento = dados.DataVencimento;
 
     await db.SaveChangesAsync();
 
@@ -210,19 +212,24 @@ public class Tarefa
     public bool Concluida { get; set; }
     public string Categoria { get; set; } = "Pessoal";
     public string Prioridade { get; set; } = "Media";
+    public DateOnly? DataVencimento { get; set; }
+
 
 }
 
 public record NovaTarefa(
     string Titulo,
     string? Categoria,
-    string? Prioridade
+    string? Prioridade,
+    DateOnly? DataVencimento
 );
 
 public record EditarTarefa(
     string Titulo,
     string Categoria,
-    string? Prioridade
+    string? Prioridade,
+    DateOnly? DataVencimento
 );
+
 
 
